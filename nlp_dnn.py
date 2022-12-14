@@ -18,7 +18,7 @@ df_sample_submission = pd.read_csv(sample_submission_url)
 
 # 評估缺失值
 print((df_train.isnull().sum()/len(df_train)), "\n")
-print((df_test.isnull().sum()/len(df_test)), "\n")
+print((df_test.isnull().sum()/len(df_test)), "\n") 
 print((df_sample_submission.isnull().sum()/len(df_sample_submission)), "\n")
 
 # ===================

@@ -26,7 +26,7 @@ sample_submission_url = "./excel/sample_submission.csv"
 #     資 料 載 入
 # ===================
 TextPreprocessor = TextPreprocessing()
-df_train, df_test = TextPreprocessor.load_datasets(train_url, test_url)
+df_train, df_test, tokenize = TextPreprocessor.load_datasets(train_url, test_url)
 
 # ===================
 #     資 料 準 備

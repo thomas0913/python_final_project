@@ -118,7 +118,7 @@ class TextLearning():
         # 訓練模型
         model = self.build_model(model_select='LSTM')
         history = model.fit(self.train_data, self.train_target,
-                            epochs=20, batch_size=512,
+                            epochs=40, batch_size=512,
                             validation_data=(self.valid_data, self.valid_target),
                             verbose='auto',
                             shuffle=True)

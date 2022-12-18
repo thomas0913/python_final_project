@@ -4,8 +4,6 @@ import nltk
 import contractions
 from lib.text_removal import TextRemoval
 from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
-from nltk.stem import SnowballStemmer
 
 def snowball_stemmer(text):
     '''
@@ -28,12 +26,15 @@ class TextPreprocessing():
         self.df_test = None
         self.tokenizer = None
 
-    def analyzing_datasets(self):
+    def view_datasets(self):
         '''
         分析資料內容
         '''
-        print(self.df_train.head(5))
-        print(self.df_test.head(5))
+        # 資料外觀與數量
+        print(self.df_train[~self.df_train["location"].isnull()].head(5))
+        print(self.df_train.shape)
+        print(self.df_test[~self.df_test["location"].isnull()].head(5))
+        print(self.df_test.shape)
 
         return True
 
@@ -49,8 +50,8 @@ class TextPreprocessing():
         miss_value_evaluate(self.df_train)
         miss_value_evaluate(self.df_test)
         
-        # 分析資料內容
-        self.analyzing_datasets()
+        # 審視資料內容
+        self.view_datasets()
 
         # 提取重點資料
         self.df_train = self.df_train.loc[:, ['id', 'text', 'target']]
@@ -85,9 +86,6 @@ class TextPreprocessing():
         self.df_test["text_clean"] = self.df_test["text_clean"].apply(lambda x: TextRemoval.other_clean(x))
         
         return True
-
-        # 文本雜訊過濾 - 拼寫更正
-        #df_train["text_clean"] = df_train["text_clean"].apply(lambda x: TextBlob(x).correct())
 
     def text_tokenize(self):
         '''

@@ -158,7 +158,7 @@ class TextLearning():
         self.datasets_preparing()
 
         # 構建模型
-        model = self.build_model(model_select='LSTM')
+        model = self.build_model(model_select='LogisticRegression')
 
         # 訓練模型
         print("\nStart training model . . .")
@@ -216,7 +216,7 @@ class TextLearning():
         # 生成模型視圖
         print("========================================")
         print("Generating model of picture . . .\n")
-        plot_model(model, to_file='model_plot.png', show_shapes=True, show_layer_names=False, rankdir='LR')
+        plot_model(model, to_file='./images/model_plot.png', show_shapes=True, show_layer_names=False, rankdir='LR')
         print("========================================")
         print("========================================")
         print("Analyzing success ! ! !\n")
